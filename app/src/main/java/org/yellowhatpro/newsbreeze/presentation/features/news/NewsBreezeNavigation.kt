@@ -5,7 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import org.yellowhatpro.newsbreeze.presentation.features.news.NewsActivity
 
 @ExperimentalMaterial3Api
 @Composable
@@ -15,7 +14,7 @@ fun NewsBreezeNavigation(
 ) {
     NavHost(navHostController, startDestination = "home"){
         composable(route = "home"){
-            HomeScreen(newsActivity)
+            HomeScreen(navHostController)
         }
         composable(route = "single_news"){
             SingleNewsScreen()

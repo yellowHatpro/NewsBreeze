@@ -16,15 +16,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import org.yellowhatpro.newsbreeze.presentation.features.theme.DividerColor
 import org.yellowhatpro.newsbreeze.presentation.features.theme.SearchGray
 import org.yellowhatpro.newsbreeze.presentation.features.theme.searchFont
 
 @ExperimentalMaterial3Api
 @Composable
-fun HomeScreen(activity: NewsActivity) {
+fun HomeScreen(navHostController: NavHostController) {
     Scaffold(
-        topBar = { HomeTopAppBar(activity) }
+        topBar = { HomeTopAppBar(navHostController = navHostController) }
     ) { paddingValues ->
         val searchTextState = remember {
             mutableStateOf(TextFieldValue(""))

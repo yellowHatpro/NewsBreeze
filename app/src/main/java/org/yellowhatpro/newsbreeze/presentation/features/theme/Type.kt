@@ -41,3 +41,6 @@ val fonts = FontFamily(
 val searchFont = FontFamily(
     Font(R.raw.montserrat_regular)
 )
+val savedScreenTopText = FontFamily(
+    Font(R.raw.sourcesanspro_regular)
+)
