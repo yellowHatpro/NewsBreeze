@@ -1,4 +1,4 @@
-package org.yellowhatpro.newsbreeze.ui.theme
+package org.yellowhatpro.newsbreeze.presentation.features.theme
 
 import android.app.Activity
 import android.os.Build
@@ -16,15 +16,15 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = Primary,
+    secondary = Primary,
+    tertiary = Primary
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = Primary,
+    secondary = Primary,
+    tertiary = Primary
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
