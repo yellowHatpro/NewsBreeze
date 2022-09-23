@@ -3,6 +3,8 @@ package org.yellowhatpro.newsbreeze.presentation.features.news
 import android.app.Activity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -25,8 +27,14 @@ fun HomeTopAppBar(
     title: String = "NewsBreeze"
 ) {
     TopAppBar(
+        modifier = Modifier
+            .fillMaxWidth(0.95f),
         title = {
-            Text(text = title, fontFamily = fonts, fontSize = 24.sp)
+            Text(
+                modifier = Modifier.padding(10.dp),
+                text = title, fontFamily = fonts,
+                fontSize = 24.sp
+            )
         },
         actions = {
             IconButton(onClick = { /*TODO*/ }) {

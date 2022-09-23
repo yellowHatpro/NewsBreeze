@@ -38,3 +38,6 @@ val Typography = Typography(
 val fonts = FontFamily(
     Font(R.raw.chomsky)
 )
+val searchFont = FontFamily(
+    Font(R.raw.montserrat_regular)
+)
