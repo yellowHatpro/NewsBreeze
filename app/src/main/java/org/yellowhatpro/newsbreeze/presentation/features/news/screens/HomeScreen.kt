@@ -1,5 +1,6 @@
 package org.yellowhatpro.newsbreeze.presentation.features.news.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -9,9 +10,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import org.yellowhatpro.newsbreeze.presentation.features.news.HomeTopAppBar
@@ -21,8 +22,7 @@ import org.yellowhatpro.newsbreeze.presentation.features.theme.DividerColor
 
 @ExperimentalMaterial3Api
 @Composable
-fun HomeScreen(navHostController: NavHostController) {
-    val viewModel = hiltViewModel<NewsBreezeViewModel>()
+fun HomeScreen(navHostController: NavHostController, viewModel: NewsBreezeViewModel) {
     Scaffold(
         topBar = { HomeTopAppBar(navHostController = navHostController) }
     ) { paddingValues ->
@@ -49,7 +49,10 @@ fun HomeScreen(navHostController: NavHostController) {
             LazyColumn {
 
                 items(newsArticles.value) {
-                    Column {
+                    Column(modifier = Modifier
+                        .clickable {
+                            navHostController.navigate("single_news/${it.title}")
+                        }) {
                         NewsItem(
                             imageUrl = it.urlToImage ?: "",
                             title = it.title ?: "",
@@ -89,7 +92,7 @@ fun NewsItem(
                     .matchParentSize()
             )
         }
-        Text(text = title)
+        Text(text = title, fontWeight = FontWeight.Bold)
         Text(text = desc)
         Text(text = date)
     }

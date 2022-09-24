@@ -38,4 +38,12 @@ class NewsBreezeViewModel @Inject constructor(
             }
         }
     }
+
+    fun getSingleNewsItemFromTitle(title: String) : Article{
+        Log.d("title",title)
+        Log.d("title2",latestNewsList.value.toString())
+        return latestNewsList.value.first {
+            it.title == title
+        }
+    }
 }
