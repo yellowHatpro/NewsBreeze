@@ -16,7 +16,7 @@ import org.yellowhatpro.newsbreeze.presentation.features.news.components.SearchV
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SavedScreen(navHostController: NavHostController) {
-    Scaffold(topBar = { SavedScreenTopAppBar(navHostController = navHostController) }) { paddingValues->
+    Scaffold(topBar = { SavedScreenTopAppBar(navController = navHostController) }) { paddingValues->
         val searchTextState = remember {
             mutableStateOf(TextFieldValue(""))
         }

@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import org.yellowhatpro.newsbreeze.presentation.features.theme.Primary
@@ -65,7 +66,7 @@ fun HomeTopAppBar(
 @Composable
 fun SavedScreenTopAppBar(
     title: String = "Saved",
-    navHostController: NavHostController
+    navController: NavController
 ) {
     TopAppBar(title = {
         Text(
@@ -86,7 +87,7 @@ fun SavedScreenTopAppBar(
             modifier = Modifier
                 .size(40.dp)
                 .clickable {
-                    navHostController.navigate("home")
+                    navController.navigateUp()
                 })
     })
 }
