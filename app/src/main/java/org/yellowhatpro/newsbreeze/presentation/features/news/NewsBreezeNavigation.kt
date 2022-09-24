@@ -17,10 +17,10 @@ fun NewsBreezeNavigation(
             HomeScreen(navHostController)
         }
         composable(route = "single_news"){
-            SingleNewsScreen()
+            SingleNewsScreen(navHostController)
         }
         composable(route = "saved"){
-            SavedScreen()
+            SavedScreen(navHostController)
         }
     }
 }

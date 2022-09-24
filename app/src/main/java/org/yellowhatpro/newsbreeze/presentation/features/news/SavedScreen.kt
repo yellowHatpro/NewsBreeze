@@ -10,12 +10,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.navigation.NavHostController
 import org.yellowhatpro.newsbreeze.presentation.features.news.components.SearchView
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SavedScreen() {
-    Scaffold(topBar = { SavedScreenTopAppBar() }) { paddingValues->
+fun SavedScreen(navHostController: NavHostController) {
+    Scaffold(topBar = { SavedScreenTopAppBar(navHostController = navHostController) }) { paddingValues->
         val searchTextState = remember {
             mutableStateOf(TextFieldValue(""))
         }

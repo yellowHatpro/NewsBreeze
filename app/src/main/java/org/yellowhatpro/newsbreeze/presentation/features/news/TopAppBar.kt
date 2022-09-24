@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import org.yellowhatpro.newsbreeze.presentation.features.theme.Primary
 import org.yellowhatpro.newsbreeze.presentation.features.theme.fonts
@@ -63,7 +64,8 @@ fun HomeTopAppBar(
 @ExperimentalMaterial3Api
 @Composable
 fun SavedScreenTopAppBar(
-    title: String = "Saved"
+    title: String = "Saved",
+    navHostController: NavHostController
 ) {
     TopAppBar(title = {
         Text(
@@ -78,6 +80,13 @@ fun SavedScreenTopAppBar(
         )
     },
     navigationIcon = {
-        Icon(Icons.Rounded.KeyboardArrowLeft, contentDescription = "", tint = Color.Black, modifier = Modifier.size(40.dp))
+        Icon(Icons.Rounded.KeyboardArrowLeft,
+            contentDescription = "",
+            tint = Color.Black,
+            modifier = Modifier
+                .size(40.dp)
+                .clickable {
+                    navHostController.navigate("home")
+                })
     })
 }
