@@ -16,8 +16,8 @@ class NewsActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val navController = rememberNavController()
+            val viewModel : NewsBreezeViewModel = hiltViewModel()
             NewsBreezeTheme {
-                val viewModel : NewsBreezeViewModel = hiltViewModel()
                 NewsBreezeNavigation(navController, this, viewModel)
             }
         }

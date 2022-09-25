@@ -24,7 +24,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import org.yellowhatpro.newsbreeze.presentation.features.theme.Primary
 import org.yellowhatpro.newsbreeze.presentation.features.theme.fonts
-import org.yellowhatpro.newsbreeze.presentation.features.theme.savedScreenTopText
+import org.yellowhatpro.newsbreeze.presentation.features.theme.sourceSans
 
 @ExperimentalMaterial3Api
 @Composable
@@ -72,7 +72,7 @@ fun SavedScreenTopAppBar(
             modifier = Modifier
                 .fillMaxWidth(0.85f)
                 .padding(10.dp),
-            text = title, fontFamily = savedScreenTopText,
+            text = title, fontFamily = sourceSans,
             fontSize = 24.sp,
             textAlign = TextAlign.Center,
             color = Primary,

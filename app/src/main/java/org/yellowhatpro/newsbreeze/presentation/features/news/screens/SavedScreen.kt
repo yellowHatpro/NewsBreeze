@@ -17,8 +17,9 @@ import org.yellowhatpro.newsbreeze.presentation.features.news.components.SearchV
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SavedScreen(navHostController: NavHostController, viewModel: NewsBreezeViewModel) {
-    Scaffold(topBar = { SavedScreenTopAppBar(navController = navHostController) }) { paddingValues->
+fun SavedScreen(navHostController: NavHostController,
+                viewModel: NewsBreezeViewModel) {
+    Scaffold(topBar = { SavedScreenTopAppBar(navController = navHostController) }) { paddingValues ->
         val searchTextState = remember {
             mutableStateOf(TextFieldValue(""))
         }
@@ -26,7 +27,7 @@ fun SavedScreen(navHostController: NavHostController, viewModel: NewsBreezeViewM
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-        )  {
+        ) {
 
             SearchView(state = searchTextState)
         }
