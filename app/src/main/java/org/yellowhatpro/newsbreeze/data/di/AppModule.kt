@@ -17,4 +17,5 @@ object AppModule {
     @Singleton
     fun provideNewsBreezeRepository(newsApi: NewsApi) : NewsBreezeRepository =
         NewsBreezeRepositoryImpl(newsApi)
+
 }

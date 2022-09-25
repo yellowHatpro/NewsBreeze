@@ -22,28 +22,20 @@ class NewsBreezeViewModel @Inject constructor(
 
     fun loadPaginatedNews() {
         viewModelScope.launch {
-            try{
+            try {
                 val newsResponse =
                     newsBreezeRepository
-                        .getLatestNews()
-                if (newsResponse.status == "ok") {
+                        .getLatestNews().body()
+                if (newsResponse?.status == "ok") {
                     val newsArticles = newsResponse.articles
                     latestNewsList.value = newsArticles
 
                 } else {
-                    Log.d("check", newsResponse.status)
+                    Log.d("check", newsResponse!!.status)
                 }
-            } catch (e:Exception){
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
-        }
-    }
-
-    fun getSingleNewsItemFromTitle(title: String) : Article{
-        Log.d("title",title)
-        Log.d("title2",latestNewsList.value.toString())
-        return latestNewsList.value.first {
-            it.title == title
         }
     }
 }

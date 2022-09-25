@@ -1,6 +1,5 @@
 package org.yellowhatpro.newsbreeze.data.di
 
-import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
@@ -8,39 +7,22 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Cache
 import okhttp3.OkHttpClient
 import org.yellowhatpro.NewsBreezeApp.Companion.appContext
 import org.yellowhatpro.newsbreeze.data.api.NewsApi
+import org.yellowhatpro.newsbreeze.util.Constants.BASE_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object NewsApiModule {
 
-    private const val BASE_URL = "https://newsapi.org/"
-
     @Provides
     @Singleton
-    fun provideNewsApi(app: Application) : NewsApi {
-        val cacheSize = (10*1024*1024).toLong()
-        val cache = Cache(app.cacheDir, cacheSize)
+    fun provideNewsApi() : NewsApi {
         val okHttpClient = OkHttpClient.Builder()
-            .connectTimeout(60, TimeUnit.SECONDS)
-            .readTimeout(60, TimeUnit.SECONDS)
-            .writeTimeout(60, TimeUnit.SECONDS)
-            .cache(cache)
-            .addInterceptor{
-                var request = it.request()
-                request = if (hasNetwork()==true)
-                    request.newBuilder().header("Cache-Control","public, max-age="+5).build()
-                else
-                    request.newBuilder().header("Cache-Control","public, only-if-cached, max-stale="+60*60*24*7).build()
-                it.proceed(request)
-            }
             .build()
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
