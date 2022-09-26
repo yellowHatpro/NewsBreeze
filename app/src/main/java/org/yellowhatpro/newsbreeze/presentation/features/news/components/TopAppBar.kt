@@ -1,4 +1,4 @@
-package org.yellowhatpro.newsbreeze.presentation.features.news
+package org.yellowhatpro.newsbreeze.presentation.features.news.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

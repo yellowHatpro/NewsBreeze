@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import org.yellowhatpro.newsbreeze.data.entities.Article
-import org.yellowhatpro.newsbreeze.presentation.features.news.HomeTopAppBar
+import org.yellowhatpro.newsbreeze.presentation.features.news.components.HomeTopAppBar
 import org.yellowhatpro.newsbreeze.presentation.features.news.NewsBreezeViewModel
 import org.yellowhatpro.newsbreeze.presentation.features.news.components.Button
 import org.yellowhatpro.newsbreeze.presentation.features.news.components.SearchView

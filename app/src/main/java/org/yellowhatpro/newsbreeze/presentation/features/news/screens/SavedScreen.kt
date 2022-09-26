@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.navigation.NavHostController
 import org.yellowhatpro.newsbreeze.presentation.features.news.NewsBreezeViewModel
-import org.yellowhatpro.newsbreeze.presentation.features.news.SavedScreenTopAppBar
+import org.yellowhatpro.newsbreeze.presentation.features.news.components.SavedScreenTopAppBar
 import org.yellowhatpro.newsbreeze.presentation.features.news.components.SearchView
 
 @OptIn(ExperimentalMaterial3Api::class)

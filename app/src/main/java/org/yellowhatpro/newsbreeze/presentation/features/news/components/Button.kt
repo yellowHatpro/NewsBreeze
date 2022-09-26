@@ -1,6 +1,5 @@
 package org.yellowhatpro.newsbreeze.presentation.features.news.components
 
-import android.widget.Button
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
