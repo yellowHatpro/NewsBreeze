@@ -34,7 +34,6 @@ fun SingleNewsScreen(
     viewModel: NewsBreezeViewModel
 ) {
     val article = viewModel.latestNewsList.value[title.toInt()]
-    val isSaved by remember{ mutableStateOf(article.isSaved)}
     Scaffold(topBar = {}) { paddingValues ->
         Box(
             modifier = Modifier
@@ -67,7 +66,7 @@ fun SingleNewsScreen(
                         .clickable { navHostController.navigateUp() }
                 )
 
-                Icon(imageVector = if (!isSaved) Icons.Rounded.TurnedInNot
+                Icon(imageVector = if (!article.isSaved) Icons.Rounded.TurnedInNot
                 else Icons.Rounded.TurnedIn,
                     contentDescription = "",
                     tint = BackgroundTint,
@@ -139,7 +138,7 @@ fun SingleNewsScreen(
                             modifier = Modifier
                                 .clickable { viewModel.toggleSaved(article, !article.isSaved)}
                                 .weight(4f),
-                            isSaved = isSaved
+                            isSaved = article.isSaved
                         )
                     }
                     Text(
