@@ -17,18 +17,25 @@ class NewsBreezeViewModel @Inject constructor(
     init {
         loadNews()
     }
+
     var latestNewsList = mutableStateOf<List<Article>>(listOf())
 
     private fun loadNews() {
         viewModelScope.launch {
             try {
-                    newsBreezeRepository
-                        .getArticles().collect{ result->
-                            latestNewsList.value = result.data ?: listOf()
-                        }
+                newsBreezeRepository
+                    .getArticles().collect { result ->
+                        latestNewsList.value = result.data ?: listOf()
+                    }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
+        }
+    }
+
+    fun toggleSaved(article: Article, isSaved: Boolean){
+        viewModelScope.launch {
+            newsBreezeRepository.toggleSaveState(article,isSaved)
         }
     }
 }

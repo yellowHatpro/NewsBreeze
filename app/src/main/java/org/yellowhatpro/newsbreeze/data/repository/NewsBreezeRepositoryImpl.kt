@@ -5,6 +5,7 @@ import dagger.hilt.android.scopes.ActivityScoped
 import kotlinx.coroutines.delay
 import org.yellowhatpro.newsbreeze.data.api.NewsApi
 import org.yellowhatpro.newsbreeze.data.db.NewsArticlesDatabase
+import org.yellowhatpro.newsbreeze.data.entities.Article
 import org.yellowhatpro.newsbreeze.data.entities.NewsResponse
 import org.yellowhatpro.newsbreeze.util.networkBoundResource
 import javax.inject.Inject
@@ -32,6 +33,10 @@ class NewsBreezeRepositoryImpl @Inject constructor(
             }
         }
     )
+
+    override suspend fun toggleSaveState(article: Article,isSaved: Boolean) {
+        newsBreezeDao.toggleSavedState(isSaved = isSaved,id = article.id!!)
+    }
 
     override suspend fun getLatestNews():
             NewsResponse =

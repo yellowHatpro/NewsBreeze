@@ -21,7 +21,8 @@ import coil.compose.AsyncImage
 import org.yellowhatpro.newsbreeze.data.entities.Article
 import org.yellowhatpro.newsbreeze.presentation.features.news.components.HomeTopAppBar
 import org.yellowhatpro.newsbreeze.presentation.features.news.NewsBreezeViewModel
-import org.yellowhatpro.newsbreeze.presentation.features.news.components.Button
+import org.yellowhatpro.newsbreeze.presentation.features.news.components.ReadButton
+import org.yellowhatpro.newsbreeze.presentation.features.news.components.SaveButton
 import org.yellowhatpro.newsbreeze.presentation.features.news.components.SearchView
 import org.yellowhatpro.newsbreeze.presentation.features.theme.DividerColor
 import org.yellowhatpro.newsbreeze.presentation.features.theme.queensPark
@@ -106,6 +107,7 @@ fun NewsItem(
                     .matchParentSize(),
                 contentScale = ContentScale.FillBounds
             )
+
         }
         Text(text = title,
             fontSize = 22.sp,
@@ -130,12 +132,14 @@ fun NewsItem(
                 .fillMaxWidth()
                 .padding(5.dp),
             horizontalArrangement = Arrangement.SpaceEvenly){
-            Button(text = "Read",
-                modifier = Modifier
+            ReadButton(modifier = Modifier
                 .clickable {
                     navHostController.navigate("single_news/${newsArticles.value.indexOf(selectedItem)}")
                 })
-            Button(text = "Save")
+            SaveButton(isSaved = selectedItem.isSaved,
+                modifier = Modifier.clickable {
+                    viewModel.toggleSaved(selectedItem,!selectedItem.isSaved)
+                })
         }
         Divider(
             color = DividerColor,

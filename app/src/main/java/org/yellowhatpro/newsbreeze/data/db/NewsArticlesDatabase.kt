@@ -14,4 +14,5 @@ import org.yellowhatpro.newsbreeze.data.entities.Article
 @TypeConverters(TypeConverter::class)
 abstract class NewsArticlesDatabase: RoomDatabase(){
     abstract val newsBreezeDao: NewsBreezeDao
+
 }

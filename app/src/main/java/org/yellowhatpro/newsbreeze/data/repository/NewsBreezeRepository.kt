@@ -7,6 +7,6 @@ import org.yellowhatpro.newsbreeze.util.Resource
 
 interface NewsBreezeRepository {
     suspend fun getLatestNews() : NewsResponse
+    suspend fun toggleSaveState(article: Article, isSaved: Boolean)
     fun getArticles(): Flow<Resource<List<Article>>>
-
 }

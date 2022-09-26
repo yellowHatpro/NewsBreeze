@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import org.yellowhatpro.newsbreeze.presentation.features.news.NewsBreezeViewModel
+import org.yellowhatpro.newsbreeze.presentation.features.news.components.SaveButton
 import org.yellowhatpro.newsbreeze.presentation.features.theme.BackgroundTint
 import org.yellowhatpro.newsbreeze.presentation.features.theme.queensPark
 import org.yellowhatpro.newsbreeze.presentation.features.theme.sourceSans
@@ -33,7 +34,7 @@ fun SingleNewsScreen(
     viewModel: NewsBreezeViewModel
 ) {
     val article = viewModel.latestNewsList.value[title.toInt()]
-    var isSaved by remember { mutableStateOf(false) }
+    val isSaved by remember{ mutableStateOf(article.isSaved)}
     Scaffold(topBar = {}) { paddingValues ->
         Box(
             modifier = Modifier
@@ -73,8 +74,7 @@ fun SingleNewsScreen(
                     modifier = Modifier
                         .size(60.dp)
                         .align(Alignment.TopEnd)
-                        .padding(15.dp)
-                        .clickable { isSaved = !isSaved })
+                        .padding(15.dp))
 
                 Column (modifier = Modifier
                     .fillMaxWidth(0.9f)
@@ -89,7 +89,6 @@ fun SingleNewsScreen(
                         fontWeight = FontWeight.ExtraBold,
                         fontSize = 22.sp)
                 }
-
             }
             Box(
                 modifier = Modifier
@@ -136,13 +135,15 @@ fun SingleNewsScreen(
                                 fontFamily = sourceSans
                             )
                         }
-                        org.yellowhatpro.newsbreeze.presentation.features.news.components.Button(
-                            text = "Save",
-                            modifier = Modifier.weight(4f)
+                        SaveButton(
+                            modifier = Modifier
+                                .clickable { viewModel.toggleSaved(article, !article.isSaved)}
+                                .weight(4f),
+                            isSaved = isSaved
                         )
                     }
                     Text(
-                        text = article.content ?: "No contents",
+                        text = article.content ?: article.description ?: "No content",
                         textAlign = TextAlign.Start,
                         modifier = Modifier.padding(
                             start = 10.dp,
