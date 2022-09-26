@@ -7,11 +7,16 @@ class Resource<T>(val status: Status, val data: T?) {
     }
 
     companion object {
-        fun <S> failure(): Resource<S> {
-            return Resource(Status.FAILED, null)
+        fun <S> failure(data : S? = null): Resource<S> {
+            return Resource(Status.FAILED, data)
         }
-        fun <S> loading(): Resource<S> {
-            return Resource(Status.LOADING, null)
+
+        fun <S> loading(data: S? = null): Resource<S> {
+            return Resource(Status.LOADING, data)
+        }
+
+        fun <S> success(data: S): Resource<S> {
+            return Resource(Status.SUCCESS, data = data)
         }
     }
 }

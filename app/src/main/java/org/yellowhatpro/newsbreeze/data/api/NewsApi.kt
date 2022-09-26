@@ -2,7 +2,6 @@ package org.yellowhatpro.newsbreeze.data.api
 
 import org.yellowhatpro.newsbreeze.data.entities.NewsResponse
 import org.yellowhatpro.newsbreeze.util.Constants.API_KEY
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -13,5 +12,5 @@ interface NewsApi {
         country: String = "in",
         @Query("apiKey")
         apiKey: String = API_KEY
-    ) : Response<NewsResponse>
+    ) : NewsResponse
 }

@@ -1,6 +1,5 @@
 package org.yellowhatpro.newsbreeze.presentation.features.news
 
-import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,23 +15,17 @@ class NewsBreezeViewModel @Inject constructor(
 ): ViewModel() {
 
     init {
-        loadPaginatedNews()
+        loadNews()
     }
     var latestNewsList = mutableStateOf<List<Article>>(listOf())
 
-    fun loadPaginatedNews() {
+    private fun loadNews() {
         viewModelScope.launch {
             try {
-                val newsResponse =
                     newsBreezeRepository
-                        .getLatestNews().body()
-                if (newsResponse?.status == "ok") {
-                    val newsArticles = newsResponse.articles
-                    latestNewsList.value = newsArticles
-
-                } else {
-                    Log.d("check", newsResponse!!.status)
-                }
+                        .getArticles().collect{ result->
+                            latestNewsList.value = result.data ?: listOf()
+                        }
             } catch (e: Exception) {
                 e.printStackTrace()
             }

@@ -1,8 +1,12 @@
 package org.yellowhatpro.newsbreeze.data.repository
 
+import kotlinx.coroutines.flow.Flow
+import org.yellowhatpro.newsbreeze.data.entities.Article
 import org.yellowhatpro.newsbreeze.data.entities.NewsResponse
-import retrofit2.Response
+import org.yellowhatpro.newsbreeze.util.Resource
 
 interface NewsBreezeRepository {
-    suspend fun getLatestNews() : Response<NewsResponse>
+    suspend fun getLatestNews() : NewsResponse
+    fun getArticles(): Flow<Resource<List<Article>>>
+
 }
